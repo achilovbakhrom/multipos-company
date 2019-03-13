@@ -6,18 +6,36 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-1']
-        }
+      },
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      {
+        test: /\.(jpg|png|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 10*1024
+            },
+          },
+        ],
+      },
+      {
+        test: /\.html$/,
+        use: 'html-loader'
       }
-    ]
+
+    ],
+
   },
+
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    modules: ['node_modules', 'src'],
+    extensions: ['.js', '.jsx']
   },
   devServer: {
     historyApiFallback: true,

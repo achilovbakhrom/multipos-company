@@ -1,15 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import ReduxPromise from "redux-promise";
+import reduxThunk from "redux-thunk";
+import App from "./components/app";
+import reducers from "./reducers";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import DefaultTheme from "./styles/DefaulTheme";
 
-import App from './components/app';
-import reducers from './reducers';
-
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise, reduxThunk)(createStore);
+const store = createStoreWithMiddleware(reducers);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
+  <Provider store={store}>
+    <MuiThemeProvider theme={DefaultTheme}>
+      <App/>
+    </MuiThemeProvider>
   </Provider>
-  , document.querySelector('.container'));
+  , document.querySelector(".container"));
