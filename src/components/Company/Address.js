@@ -37,8 +37,12 @@ class AddressCompany extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      country: '',
-      city: '',
+      company:{
+        address_information:{
+          country: '',
+          city: '',
+        },
+      },
     };
     this.handleInput = this.handleInput.bind(this);
   }
@@ -46,33 +50,35 @@ class AddressCompany extends React.Component {
   handleInput(event){
     const name = event.target.name;
     const value = event.target.value;
-    this.props.onChange(name,value);
+    this.setState((prevState)=>({
+      company:{
+        address_information:{
+          ...prevState.company.address_information,
+          [name]:value,
+        }
+      }
+    }),()=>{this.props.onChange(this.state)});
   }
 
-  handleChangeCountry = (event) => {
-    console.log(event.target.value);
-    this.setState({
-      country: event.target.value
-    });
-    this.handleInput(event);
-  };
-  handleChangeCity = (event) => {
-    this.setState({
-      city: event.target.value
-    });
-    this.handleInput(event);
-  };
   componentDidMount(){
-    if(this.props.country){
-      this.setState({
-        country:this.props.country,
-      });
-    }
-    if(this.props.city){
-      this.setState({
-        city:this.props.city,
-      });
-    }
+    // if(this.props.country && this.props.country.length>0){
+    //   this.setState({
+    //     company:{
+    //       address_information: {
+    //         country:this.props.country
+    //       }
+    //     }
+    //   });
+    // }
+    // if(this.props.city && this.props.city.length>0){
+    //   this.setState({
+    //     company:{
+    //       address_information: {
+    //         city:this.props.city
+    //       }
+    //     }
+    //   });
+    // }
   }
 
 
@@ -80,9 +86,42 @@ class AddressCompany extends React.Component {
     let fields = this.props.fields;
     let errors = this.props.errors;
     let submitted = this.props.submitted;
+    // console.log(this.state);
     return (
       <div>
+        <Grid container direction="column" style={{ paddingTop: 20 }}>
           <Grid container direction="column" style={{ paddingTop: 20 }}>
+            <Grid container justify='center'>
+              <Grid item xs={12}>
+                <Grid
+                  container direction='column'>
+                  <Grid item>
+                    <Typography variant={'h6'} gutterBottom>
+                      Type
+                    </Typography>
+                  </Grid>
+                  <Grid>
+                    <TextField
+                      fullWidth
+                      value={fields.type}
+                      error={submitted && errors.type?(
+                        true
+                      ):(false)}
+                      name={'type'}
+                      onChange={this.handleInput}
+                      variant="outlined"
+                    />
+                    {submitted && errors.type &&
+                    <ValidationError>
+                      {errors.type}
+                    </ValidationError>
+                    }
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+        </Grid>
+
             <Grid container justify='center'>
               <Grid item xs={12}>
                 <Grid
@@ -95,17 +134,17 @@ class AddressCompany extends React.Component {
                   <Grid>
                       <TextField
                         fullWidth
-                        value={fields.street_address}
-                        error={submitted && errors.street_address?(
+                        value={fields.street_address_1}
+                        error={submitted && errors.street_address_1?(
                           true
                         ):(false)}
-                        name={'street_address'}
+                        name={'street_address_1'}
                         onChange={this.handleInput}
                         variant="outlined"
                       />
-                    {submitted && errors.street_address &&
+                    {submitted && errors.street_address_1 &&
                     <ValidationError>
-                    {errors.street_address}
+                    {errors.street_address_1}
                       </ValidationError>
                     }
                   </Grid>
@@ -124,17 +163,17 @@ class AddressCompany extends React.Component {
                   <Grid>
                         <TextField
                           fullWidth
-                          error={submitted && errors.street_address2?(
+                          error={submitted && errors.street_address_2?(
                             true
                           ):(false)}
-                          value={fields.street_address2}
-                          name={'street_address2'}
+                          value={fields.street_address_2}
+                          name={'street_address_2'}
                           onChange={this.handleInput}
                           variant="outlined"
                         />
-                    {submitted && errors.street_address2 &&
+                    {submitted && errors.street_address_2 &&
                     <ValidationError>
-                       {errors.street_address2}
+                       {errors.street_address_2}
                       </ValidationError>
                     }
                   </Grid>
@@ -152,8 +191,8 @@ class AddressCompany extends React.Component {
                   </Grid>
                   <Grid item>
                        <Select
-                         value={this.state.country}
-                         onChange={this.handleChangeCountry}
+                         value={this.props.country ? this.props.country : this.state.company.address_information.country}
+                         onChange={this.handleInput}
                          fullWidth
                          name={'country'}
                          input={<FilledInput  style={{ border: "solid 0.5px grey", backgroundColor: "white" }}/>}
@@ -164,7 +203,7 @@ class AddressCompany extends React.Component {
                            </MenuItem>
                          ))}
                        </Select>
-                    {submitted && this.state.country.length === 0 &&
+                    {submitted && this.state.company.address_information.country.length === 0 &&
                     <ValidationError>
                         Country field is required
                       </ValidationError>
@@ -182,9 +221,9 @@ class AddressCompany extends React.Component {
                   <Grid item>
                       <Select
                         fullWidth
-                        value={this.state.city}
+                        value={this.props.city ? this.props.city : this.state.company.address_information.city}
                         name={'city'}
-                        onChange={this.handleChangeCity}
+                        onChange={this.handleInput}
                         input={<FilledInput style={{ border: "solid 0.5px grey", backgroundColor: "white" }}/>}
                       >
                         {CityNames.map(city => (
@@ -193,7 +232,7 @@ class AddressCompany extends React.Component {
                           </MenuItem>
                         ))}
                       </Select>
-                    {submitted && this.state.city.length === 0 &&
+                    {submitted && this.state.company.address_information.city.length === 0 &&
                     <ValidationError>
                        City field is required
                       </ValidationError>
@@ -203,35 +242,7 @@ class AddressCompany extends React.Component {
               </Grid>
             </Grid>
             <Grid container direction="row" spacing={24} style={{ paddingTop: 20 }}>
-              <Grid item xs={6}>
-                <Grid
-                  container direction='column'>
-                  <Grid item>
-                    <Typography variant={'h6'} gutterBottom>
-                      State
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                      <TextField
-                        fullWidth
-                        name={'state'}
-                        error={submitted && errors.state?(
-                          true
-                        ):(false)}
-                        value={fields.state}
-                        onChange={this.handleInput}
-                        id='outlined-bare'
-                        variant='outlined'
-                      />
-                    {submitted && errors.state &&
-                    <ValidationError>
-                        {errors.state}
-                      </ValidationError>
-                    }
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12}>
                 <Grid container direction='column'>
                   <Grid item>
                     <Typography variant={'h6'} gutterBottom>
@@ -271,18 +282,18 @@ class AddressCompany extends React.Component {
                   <Grid>
                       <TextField
                         fullWidth
-                        name={'description2'}
-                        error={submitted && errors.description2?(
+                        name={'description_2'}
+                        error={submitted && errors.description_2?(
                           true
                         ):(false)}
-                        value={fields.description2}
+                        value={fields.description_2}
                         onChange={this.handleInput}
                         id='outlined-bare'
                         variant='outlined'
                       />
-                    {submitted && errors.description2 &&
+                    {submitted && errors.description_2 &&
                       <ValidationError>
-                        {errors.description2}
+                        {errors.description_2}
                       </ValidationError>
                     }
                   </Grid>

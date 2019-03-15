@@ -43,6 +43,13 @@ const ComponentsWrapper = styled.div`
   width:100%;
   padding:20px;
 `;
+const CenteredDiv = styled.div`
+  display: flex;
+  width:100%;
+  height:100%;
+  align-items:stretch;
+  justify-content:center;
+`;
 export default class App extends Component {
   render() {
     return (
@@ -78,10 +85,14 @@ export default class App extends Component {
   }
 }
 const Component1 = () => (
-  <div>
-    <Link to='/company/add-company' style={{ textDecoration: "none" }}>
-      <AddCompanyButton/>
-    </Link>
-  </div>
-
+    <CenteredDiv>
+      <div style={{alignSelf:'center'}}>
+        <p>
+          Add or select a company to view information.
+        </p>
+        <Link to='/company/add-company' style={{ textDecoration: "none" }}>
+          <AddCompanyButton/>
+        </Link>
+      </div>
+    </CenteredDiv>
 );

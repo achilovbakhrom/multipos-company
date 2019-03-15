@@ -54,7 +54,18 @@ class TabComponent extends Component {
     super(props);
     this.state = {
       value: 0,
-      gender:"male",
+      company:{
+        address_information:{
+        }
+      },
+      company_contact_persons:[
+        {
+          gender:1,
+        },
+      ],
+      requisites:[
+
+      ],
     };
     this.handleContentChange = this.handleContentChange.bind(this);
   }
@@ -73,16 +84,22 @@ class TabComponent extends Component {
 
   };
 
-  handleContentChange(name, values) {
-    //   this.setState(prevState => ({
-    //     about: {
-    //       ...prevState.about,
-    //       [name]:values,
-    //     }
-    //   }));
-    this.setState({ [name]: values });
-
-
+  handleContentChange(data) {
+    console.log(data);
+    let cm_data = data.company ? data.company : data;
+    if(data.company){
+      this.setState((prevState)=>({
+        company:{
+          ...prevState.company,
+          ...cm_data,
+        },
+      }));
+    }else{
+      this.setState((prevState)=>({
+          ...prevState,
+          ...cm_data,
+      }));
+    }
   }
 
   handleChange = (event, value) => {
@@ -92,7 +109,7 @@ class TabComponent extends Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
-    // console.log(this.state);
+    console.log(this.state);
     return (
       <FormValidation onSubmit={this.onSubmit} config={config}>
         {({ fields, errors, submitted }) => (
@@ -119,9 +136,9 @@ class TabComponent extends Component {
                 <LinkTab label="Bank Requisite"/>
               </Tabs>
             </AppBar>
-            {value === 0 && <TabContainer><AboutCompany onChange={this.handleContentChange} fields={fields} errors={errors} submitted={submitted} aboutPreview = {this.state.about_preview} file={this.state.about_image}/></TabContainer>}
-            {value === 1 && <TabContainer><AddressCompany onChange={this.handleContentChange} fields={fields} errors={errors} submitted={submitted} country={this.state.country} city={this.state.city} /></TabContainer>}
-            {value === 2 && <TabContainer><ContactPerson onChange={this.handleContentChange} fields={fields} errors={errors} submitted={submitted} contactPreview = {this.state.contact_preview} file={this.state.contact_image}/></TabContainer>}
+            {value === 0 && <TabContainer><AboutCompany onChange={this.handleContentChange} fields={fields} errors={errors} submitted={submitted} aboutPreview = {this.state.company.aboutPreview} file={this.state.company.about_image}/></TabContainer>}
+            {value === 1 && <TabContainer><AddressCompany onChange={this.handleContentChange} fields={fields} errors={errors} submitted={submitted} country={this.state.company.address_information.country} city={this.state.company.address_information.city} /></TabContainer>}
+            {value === 2 && <TabContainer><ContactPerson onChange={this.handleContentChange} fields={fields} errors={errors} submitted={submitted} contactPreview = {this.state.company_contact_persons.contactPreview} file={this.state.company_contact_persons.contact_image}/></TabContainer>}
             {value === 3 && <TabContainer><BankRequisite onChange={this.handleContentChange} fields={fields} errors={errors} submitted={submitted}/></TabContainer>}
           </div>
         )}

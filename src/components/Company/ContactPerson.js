@@ -16,7 +16,12 @@ class ContactPerson extends Component {
         color:'#fff',
       },
       gender: true,
-      activeBtn: true
+      activeBtn: true,
+      contact_info:{
+        company_contact_persons:{
+
+        }
+      }
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -26,15 +31,34 @@ class ContactPerson extends Component {
   handleInput(event) {
     const name = event.target.name;
     const value = event.target.value;
-    this.props.onChange(name, value);
+    this.setState((prevState)=>({
+      contact_info:{
+        company_contact_persons:{
+          ...prevState.contact_info.company_contact_persons,
+          [name]:value,
+        }
+      }
+    }),()=>{this.props.onChange(this.state.contact_info)});
   }
 
   handleFile(file,contactPreview){
     this.props.onChange('contact_image',file);
     this.props.onChange('contact_preview',contactPreview);
   }
+  handleFile(file, contactPreview) {
+    this.setState((prevState)=>({
+      contact_info:{
+        company_contact_persons:{
+          ...prevState.contact_info.company_contact_persons,
+          contact_image:file,
+          contactPreview:contactPreview,
+        }
+      }
+    }),()=>{this.props.onChange(this.state.contact_info)});
+  }
+
   handleChange(value) {
-    if (value === "male") {
+    if (value === 1) {
       this.setState({
         activeBtn: true,
       });
@@ -44,13 +68,21 @@ class ContactPerson extends Component {
         activeBtn: false,
       });
     }
-    this.props.onChange('gender',value);
+    this.setState((prevState)=>({
+      contact_info:{
+        company_contact_persons:{
+          ...prevState.contact_info.company_contact_persons,
+          gender:value,
+        }
+      }
+    }),()=>{this.props.onChange(this.state.contact_info)});
   }
 
   render() {
     let fields = this.props.fields;
     let errors = this.props.errors;
     let submitted = this.props.submitted;
+    // console.log(this.props);
     return (
       <div>
         <Grid container direction="column" style={{ paddingTop: 8 }}>
@@ -86,7 +118,7 @@ class ContactPerson extends Component {
                   <div>
                     <Button
                       size="large"
-                      onClick={() => this.handleChange("male")}
+                      onClick={() => this.handleChange(1)}
                       variant="contained"
                       style={this.state.activeBtn? {
                         ...this.state.buttonColors
@@ -95,7 +127,7 @@ class ContactPerson extends Component {
                     </Button>
                     <Button
                       size="large"
-                      onClick={() => this.handleChange("female")}
+                      onClick={() => this.handleChange(2)}
                       variant="contained"
                       style={!this.state.activeBtn? {
                         ...this.state.buttonColors
@@ -196,6 +228,34 @@ class ContactPerson extends Component {
               </Grid>
             </Grid>
             <Grid item xs={6}>
+              <Grid
+                container direction='column'>
+                <Grid item>
+                  <Typography variant={'h6'} gutterBottom>
+                    Marital status
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <TextField
+                    fullWidth
+                    error={submitted && errors.marital_status?(
+                      true
+                    ):(false)}
+                    name={"marital_status"}
+                    value={fields.marital_status}
+                    onChange={this.handleInput}
+                    id='outlined-bare'
+                    variant='outlined'
+                  />
+                  {submitted && errors.marital_status &&
+                  <ValidationError>
+                    {errors.marital_status}
+                  </ValidationError>
+                  }
+                </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={6}>
               <Grid container direction='column'>
                 <Grid item>
                   <Typography variant={'h6'} gutterBottom>
@@ -217,14 +277,12 @@ class ContactPerson extends Component {
                   />
                   {submitted && errors.birth_date &&
                   <ValidationError>
-                    {errors.nationality}
+                    {errors.birth_date}
                   </ValidationError>
                   }
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          <Grid container direction="row" spacing={24} style={{ paddingTop: 10 }}>
             <Grid item xs={6}>
               <Grid
                 container direction='column'>
@@ -236,45 +294,75 @@ class ContactPerson extends Component {
                 <Grid item>
                   <TextField
                     fullWidth
-                    name={"mobile_number"}
-                    error={submitted && errors.mobile_number?(
+                    name={"mobile_phone_no"}
+                    error={submitted && errors.mobile_phone_no?(
                       true
                     ):(false)}
-                    value={fields.mobile_number}
+                    value={fields.mobile_phone_no}
                     onChange={this.handleInput}
                     id='outlined-bare'
                     variant='outlined'
                   />
-                  {submitted && errors.mobile_number &&
+                  {submitted && errors.mobile_phone_no &&
                   <ValidationError>
-                    {errors.mobile_number}
+                    {errors.mobile_phone_no}
+                  </ValidationError>
+                  }
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container direction="row" spacing={24} style={{ paddingTop: 10 }}>
+            <Grid item xs={6}>
+              <Grid container direction='column'>
+                <Grid item>
+                  <Typography variant={'h6'} gutterBottom>
+                    Work phone
+                  </Typography>
+                </Grid>
+                <Grid item>
+                  <TextField
+                    fullWidth
+                    error={submitted && errors.work_phone_no?(
+                      true
+                    ):(false)}
+                    name={"work_phone_no"}
+                    value={fields.work_phone_no}
+                    onChange={this.handleInput}
+                    id='outlined-bare'
+                    variant='outlined'
+                  />
+                  {submitted && errors.work_phone_no &&
+                  <ValidationError>
+                    {errors.work_phone_no}
                   </ValidationError>
                   }
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={6}>
-              <Grid container direction='column'>
+              <Grid
+                container direction='column'>
                 <Grid item>
                   <Typography variant={'h6'} gutterBottom>
-                    Office number
+                    Personal number
                   </Typography>
                 </Grid>
-                <Grid item>
+                <Grid>
                   <TextField
                     fullWidth
-                    error={submitted && errors.street_address2?(
+                    name={"personal_phone_no"}
+                    error={submitted && errors.personal_phone_no?(
                       true
                     ):(false)}
-                    name={"office_number"}
-                    value={fields.office_number}
+                    value={fields.personal_phone_no}
                     onChange={this.handleInput}
                     id='outlined-bare'
                     variant='outlined'
                   />
-                  {submitted && errors.office_number &&
+                  {submitted && errors.personal_phone_no &&
                   <ValidationError>
-                    {errors.office_number}
+                    {errors.personal_phone_no}
                   </ValidationError>
                   }
                 </Grid>
@@ -287,24 +375,24 @@ class ContactPerson extends Component {
                 container direction='column'>
                 <Grid item>
                   <Typography variant={'h6'} gutterBottom>
-                    Personal number
+                    Position name
                   </Typography>
                 </Grid>
                 <Grid>
                   <TextField
                     fullWidth
-                    name={"personal_number"}
-                    error={submitted && errors.personal_number?(
+                    name={"position_name"}
+                    error={submitted && errors.position_name?(
                       true
                     ):(false)}
-                    value={fields.personal_number}
+                    value={fields.position_name}
                     onChange={this.handleInput}
                     id='outlined-bare'
                     variant='outlined'
                   />
-                  {submitted && errors.personal_number &&
+                  {submitted && errors.position_name &&
                   <ValidationError>
-                    {errors.personal_number}
+                    {errors.position_name}
                   </ValidationError>
                   }
                 </Grid>

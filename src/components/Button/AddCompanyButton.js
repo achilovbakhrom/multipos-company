@@ -16,11 +16,12 @@ class AddCompanyButton extends Component {
       <CompanyContentCentered>
         <Button
           style={{
-            fontSize: '25px',
+            fontSize: '18px',
             backgroundColor: '#4bb04f',
             textTransform: 'capitalize',
             color: 'white',
-            width: '30%',
+            width: '100%',
+            padding:'12px 8px'
           }}>
           Add Company
         </Button>
