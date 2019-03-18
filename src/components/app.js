@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Home from "./Home";
-import Company from "../containers/company/index";
 import AddCompany from "../containers/company/AddCompany/index";
 import AddList from "../containers/company/AddCompanyList/AddList";
 import styled from "styled-components";
