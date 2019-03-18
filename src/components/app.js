@@ -70,7 +70,8 @@ export default class App extends Component {
                         <Switch location={location}>
                           <Route exact path={"/company/add-company"} component={AddCompany}/>
                           <Route exact path={"/company"} component={Component1}/>
-                          <Route exact path={"/"} component={Home}/>
+                          <Route exact path={"/home"} component={Home}/>
+                          {/*<Route exact path={"/"} component={Home}/>*/}
                         </Switch>
                       </ContentCompanyContainer>
                     </ContentCompany>
@@ -95,3 +96,9 @@ const Component1 = () => (
       </div>
     </CenteredDiv>
 );
+// const Home = () => (
+//   <div className={'home-index'}>
+//       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, quisquam!
+//   </div>
+// );
+

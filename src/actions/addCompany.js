@@ -11,7 +11,6 @@ axios.defaults.headers.common = {'Authorization': `bearer ${token}`};
 
 
 export function addCompany(values){
-  console.log('dasd');
   const request  = axios.post('http://192.168.1.2:8081/api/v1/company/create',values).then(response=>{
     console.log(response);
   }).catch(error=>{

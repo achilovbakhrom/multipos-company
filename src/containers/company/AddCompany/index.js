@@ -85,7 +85,6 @@ class TabComponent extends Component {
   };
 
   handleContentChange(data) {
-    console.log(data);
     let cm_data = data.company ? data.company : data;
     if(data.company){
       this.setState((prevState)=>({
@@ -109,7 +108,7 @@ class TabComponent extends Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
-    console.log(this.state);
+    console.log(this.props);
     return (
       <FormValidation onSubmit={this.onSubmit} config={config}>
         {({ fields, errors, submitted }) => (
