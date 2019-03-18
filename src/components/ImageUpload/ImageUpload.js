@@ -33,14 +33,25 @@ class ImageUpload extends React.Component {
     };
     reader.readAsDataURL(file);
   }
+  dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+    while(n--){
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
+  }
+
   handleSubmit() {
+    // let file = this.dataURLtoFile(this.state.imagePreviewUrl,'test.png');
+    // console.log(file);
     this.props.onChange(this.state.file,this.state.imagePreviewUrl);
   }
+
   handleClick() {
     let input = document.createElement("input");
     input.type = "file";
     input.onchange = this.handleImageChange;
-    console.log(input);
     input.click();
   }
   handleRemove() {
