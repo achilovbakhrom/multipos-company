@@ -1,0 +1,29 @@
+
+<svg width="250px" height="90px" viewBox="0 0 68 68" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="MainScreen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main" transform="translate(-354.000000, -469.000000)">
+            <g id="ячейки" transform="translate(24.000000, 154.000000)">
+                <g id="Warehouse" transform="translate(249.000000, 249.000000)">
+                    <g id="иклнка" transform="translate(75.000000, 60.000000)">
+                        <rect id="Rectangle-2" x="0" y="0" width="80" height="80"></rect>
+                        <g id="icon">
+                            <rect id="bounds" x="0" y="0" width="80" height="80"></rect>
+                            <g id="wms" transform="translate(6.666667, 6.666667)" fill="#FFFFFF">
+                                <polygon id="Path_87" points="12.0018519 25.0907407 54.6648148 25.0907407 54.6648148 66.6666667 66.6666667 66.6666667 66.6666667 15.5203704 32.3833333 0 0 15.5203704 0 66.6666667 12.0018519 66.6666667"></polygon>
+                                <rect id="Rectangle_34" x="24.812963" y="58.5592593" width="7.57037037" height="6.51296296"></rect>
+                                <rect id="Rectangle_35" x="34.1037037" y="58.5592593" width="7.57037037" height="6.51296296"></rect>
+                                <rect id="Rectangle_36" x="15.5222222" y="58.5592593" width="7.57037037" height="6.51296296"></rect>
+                                <rect id="Rectangle_37" x="24.812963" y="49.6259259" width="7.57037037" height="6.51296296"></rect>
+                                <rect id="Rectangle_38" x="15.5222222" y="49.6259259" width="7.57037037" height="6.51296296"></rect>
+                                <rect id="Rectangle_39" x="34.1037037" y="49.6259259" width="7.57037037" height="6.51296296"></rect>
+                                <rect id="Rectangle_40" x="24.812963" y="40.6944444" width="7.57037037" height="6.51296296"></rect>
+                                <rect id="Rectangle_41" x="15.5222222" y="40.6944444" width="7.57037037" height="6.51296296"></rect>
+                                <rect id="Rectangle_42" x="43.3944444" y="58.5592593" width="7.57037037" height="6.51296296"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
