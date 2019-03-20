@@ -12,9 +12,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
-import ContactInfo from './CompanyInfo';
-import ContactPersons from './ContactPersons';
-import BankRequisites from './BankRequisites';
+import ContactInfo from '../../../components/Company/Info/CompanyInfo';
+import ContactPersons from '../../../components/Company/Info/ContactPersons';
+import BankRequisites from '../../../components/Company/Info/BankRequisites';
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -38,7 +38,7 @@ function LinkTab(props) {
 }
 const styles = theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 0,
     backgroundColor: theme.palette.background.paper
   }
 });
@@ -58,7 +58,7 @@ class Index extends Component{
   constructor(props){
     super(props);
     this.state={
-      value:1,
+      value:0,
     };
     this.handleChange = this.handleChange.bind(this);
   }

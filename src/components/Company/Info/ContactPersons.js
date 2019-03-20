@@ -9,6 +9,7 @@ import PhoneTalk from "@material-ui/icons/PhoneInTalk";
 import Email from "@material-ui/icons/Email";
 import ContactLink from './ContactItem';
 const styles = theme => ({
+
   contact_persons: {
     "&  h5": {
       fontWeight: "bold"
@@ -23,6 +24,9 @@ const styles = theme => ({
 const ContactItem = styled(Paper)`
     padding:15px;
     margin-bottom:20px;
+    padding-bottom:50px;
+    box-shadow:none!important;
+    border:1px solid #ededed;
   
 `;
 

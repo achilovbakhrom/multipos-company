@@ -22,7 +22,9 @@ const styles = theme => ({
 const ContactItem = styled(Paper)`
     padding:15px;
     margin-bottom:20px;
-box-shadow:none;
+    padding-bottom:50px;
+    box-shadow:none!important;
+    border:1px solid #ededed;
 `;
 
 class BankRequisites extends Component {

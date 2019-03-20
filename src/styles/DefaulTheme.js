@@ -23,7 +23,12 @@ const DefaultTheme = createMuiTheme({
     MuiTypography: {
       h6: {
         fontSize: pxToRem(14),
+        fontWeight:'bold',
       },
+      h5:{
+        fontWeight:'bold',
+      }
+
     }
   },
 });

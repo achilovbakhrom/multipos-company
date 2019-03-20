@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import Info from "./Company/Info";
+import Info from "../containers/company/Info";
 import AddCompany from "../containers/company/AddCompany/index";
 import AddList from "../containers/company/AddCompanyList/AddList";
 import styled from "styled-components";

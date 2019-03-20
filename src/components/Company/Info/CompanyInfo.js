@@ -18,6 +18,12 @@ const styles = theme => ({
   },
   office_address:{
     paddingTop:'20px',
+    '&::after':{
+      content:'',
+      height:'2px',
+      width:'100%',
+      display:'block',
+    }
   },
 });
 
