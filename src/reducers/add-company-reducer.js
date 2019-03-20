@@ -7,7 +7,7 @@ import {ADD_COMPANY} from '../constants/index';
 const companyReducer = (state = {}, action) => {
   switch (action.type) {
     case ADD_COMPANY:
-      return {...state, addedCompany: action.payload};
+      return action.payload;
     default:
       return state;
   }
