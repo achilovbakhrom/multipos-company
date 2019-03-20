@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
 import ContactInfo from './CompanyInfo';
 import ContactPersons from './ContactPersons';
+import BankRequisites from './BankRequisites';
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -25,6 +26,7 @@ function TabContainer(props) {
 const ContentSubmitButton = styled(Paper)`
     width: 100%;
     height: 50px;
+    
 `;
 
 TabContainer.propTypes = {
@@ -96,7 +98,7 @@ class Index extends Component{
         </AppBar>
         {value === 0 && <TabContainer><ContactInfo /></TabContainer>}
         {value === 1 && <TabContainer><ContactPersons /></TabContainer>}
-        {value === 2 && <TabContainer>2</TabContainer>}
+        {value === 2 && <TabContainer><BankRequisites /></TabContainer>}
       </div>
     );
   }
