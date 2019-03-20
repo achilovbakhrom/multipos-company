@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
-import ContactInfo from './Company/Info/CompanyInfo';
-import ContactPersons from './Company/Info/ContactPersons';
+import ContactInfo from './CompanyInfo';
+import ContactPersons from './ContactPersons';
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -52,11 +52,11 @@ const flexItem = {
   justifyContent:'space-between',
 };
 
-class Home extends Component{
+class Index extends Component{
   constructor(props){
     super(props);
     this.state={
-      value:0,
+      value:1,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -101,8 +101,8 @@ class Home extends Component{
     );
   }
 }
-Home.propTypes = {
+Index.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default connect(null,null)(withStyles(styles)(Home));
+export default connect(null,null)(withStyles(styles)(Index));
