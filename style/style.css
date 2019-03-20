@@ -1,6 +1,40 @@
-body{
+body {
     margin: 0;
 }
-img{
-    max-width:100%;
+
+img {
+    max-width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.croppie_wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 8;
+    transition: all 0.3s ease;
+}
+
+.croppie_wrapper.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.croppie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

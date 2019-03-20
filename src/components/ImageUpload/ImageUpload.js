@@ -1,23 +1,25 @@
 import React from "react";
-// used for making the prop types of this component
 import PropTypes from "prop-types";
-
-// core components
+import 'croppie/croppie.css';
+import Croppie from 'croppie/croppie.min';
 import Button from "@material-ui/core/Button";
-
+import Done from "@material-ui/icons/Done";
 import defaultImage from "../../resourse/media/avatar.png";
+
 
 class ImageUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       file: this.props.file ? this.props.file : null,
-      imagePreviewUrl: this.props.avatar ? this.props.avatar : defaultImage
+      imagePreviewUrl: this.props.avatar ? this.props.avatar : defaultImage,
+      showCropper:false,
     };
     this.handleImageChange = this.handleImageChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.closeCrop = this.closeCrop.bind(this);
   }
   handleImageChange(e) {
     e.preventDefault();
@@ -25,10 +27,9 @@ class ImageUpload extends React.Component {
     let file = e.target.files[0];
     reader.onloadend = () => {
       this.setState({
-        file: file,
-        imagePreviewUrl: reader.result
+        showCropper:true,
       },
-        this.handleSubmit
+        this.createCroppie(reader.result)
       );
     };
     reader.readAsDataURL(file);
@@ -43,8 +44,6 @@ class ImageUpload extends React.Component {
   }
 
   handleSubmit() {
-    // let file = this.dataURLtoFile(this.state.imagePreviewUrl,'test.png');
-    // console.log(file);
     this.props.onChange(this.state.file,this.state.imagePreviewUrl);
   }
 
@@ -60,28 +59,66 @@ class ImageUpload extends React.Component {
       imagePreviewUrl: defaultImage
     },this.handleSubmit);
   }
+  createCroppie(result){
+    let el = document.querySelector('.croppie');
+    let croppieObj = new Croppie(el, {
+      viewport: { width: 112, height: 112 },
+      boundary: { width: 300, height: 300 },
+      showZoomer: true,
+    });
+    croppieObj.bind({
+      url: result,
+      orientation: 4
+    });
+    this.setState({
+      croppie:croppieObj,
+    });
+  }
+
+  closeCrop() {
+    this.state.croppie.result('base64').then((base)=>{
+      let ext = base.split(';')[0].split('/')[1];
+      let name = new Date().getTime()+'.';
+      let file = this.dataURLtoFile(base,name + ext);
+      this.setState({
+        file:file,
+        imagePreviewUrl:base,
+        showCropper:false,
+      },()=>{
+        this.state.croppie.destroy();
+        this.handleSubmit();
+      });
+
+    });
+  }
   render() {
     return (
-      <div className="fileinput text-center">
+      <div className="fileinput">
         <div className={(this.props.avatar ? " img-circle" : "")}>
-          <img style={{width: "112px", height:"auto"}} src={this.state.imagePreviewUrl} alt="..." />
+          <img style={{width: "112px", height:"112px"}} src={this.state.imagePreviewUrl} alt="..." />
         </div>
         <div style={{paddingTop:'10px'}}>
           {this.state.file === null ? (
-              <Button style={{backgroundColor: '#49a4de', color:"white"}} onClick={() => this.handleClick()}>
-                Select image
-              </Button>
+            <Button style={{backgroundColor: '#49a4de', color:"white"}} onClick={() => this.handleClick()}>
+              Select image
+            </Button>
           ) : (
             <span>
               <Button style={{backgroundColor: '#49a4de', color:"white", margin: "1px"}} onClick={() => this.handleClick()}>
                 Change
               </Button>
-              {/*{this.props.avatar ? <br /> : null}*/}
               <Button style={{backgroundColor: '#49a4de', color:"white", margin: "1px"}} onClick={() => this.handleRemove()}>
                 <i className="fa fa-times" /> Remove
               </Button>
             </span>
           )}
+          <div className={this.state.showCropper ? 'croppie_wrapper active' : 'croppie_wrapper'}>
+            <div className={'croppie'}>
+              <Button style={{backgroundColor: '#49a4de', color:"white"}} onClick={this.closeCrop}>
+                <Done />
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
     );

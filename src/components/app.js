@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import Home from "./Home";
+import Info from "./Company/Info";
 import AddCompany from "../containers/company/AddCompany/index";
 import AddList from "../containers/company/AddCompanyList/AddList";
 import styled from "styled-components";
 import Paper from "@material-ui/core/Paper";
 import HeaderComponents from "../components/Header/HeaderComponent";
 import AddCompanyButton from "../components/Button/AddCompanyButton";
+import Logo from "../resourse/media/company.svg";
 
 const CompanyBackgroundComponent = styled.div`
   height: 100vh;
@@ -70,8 +71,7 @@ export default class App extends Component {
                         <Switch location={location}>
                           <Route exact path={"/company/add-company"} component={AddCompany}/>
                           <Route exact path={"/company"} component={Component1}/>
-                          <Route exact path={"/home"} component={Home}/>
-                          {/*<Route exact path={"/"} component={Home}/>*/}
+                          <Route exact path={"/company/info"} component={Info}/>
                         </Switch>
                       </ContentCompanyContainer>
                     </ContentCompany>
@@ -87,6 +87,9 @@ export default class App extends Component {
 const Component1 = () => (
     <CenteredDiv>
       <div style={{alignSelf:'center'}}>
+        <div className="text-center">
+          <Logo />
+        </div>
         <p>
           Add or select a company to view information.
         </p>
