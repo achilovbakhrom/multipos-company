@@ -19,4 +19,4 @@ ReactDOM.render(
       <PublicRoute/>
     </MuiThemeProvider>
   </Provider>
-  , document.querySelector(".container"));
+  , document.querySelector(".app"));

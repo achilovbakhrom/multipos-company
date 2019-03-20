@@ -1,0 +1,21 @@
+
+<svg width="250px" height="90px" viewBox="0 0 74 74" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="MainScreen" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main" transform="translate(-849.000000, -217.000000)">
+            <g id="ячейки" transform="translate(24.000000, 154.000000)">
+                <g id="Entities" transform="translate(747.000000, 0.000000)">
+                    <g id="иклнка" transform="translate(75.000000, 60.000000)">
+                        <rect id="Rectangle-2" x="0" y="0" width="80" height="80"></rect>
+                        <g id="icon">
+                            <rect id="bounds" x="0" y="0" width="80" height="80"></rect>
+                            <g transform="translate(3.333333, 3.333333)">
+                                <rect id="Rectangle" stroke="#FFFFFF" stroke-width="6" x="3" y="3" width="67.3333333" height="67.3333333" rx="2"></rect>
+                                <path d="M13.3333333,16.6666667 L20,16.6666667 L20,23.3333333 L13.3333333,23.3333333 L13.3333333,16.6666667 Z M26.6666667,16.6666667 L60,16.6666667 L60,23.3333333 L26.6666667,23.3333333 L26.6666667,16.6666667 Z M26.6666667,33.3333333 L60,33.3333333 L60,40 L26.6666667,40 L26.6666667,33.3333333 Z M26.6666667,50 L60,50 L60,56.6666667 L26.6666667,56.6666667 L26.6666667,50 Z M13.3333333,33.3333333 L20,33.3333333 L20,40 L13.3333333,40 L13.3333333,33.3333333 Z M13.3333333,50 L20,50 L20,56.6666667 L13.3333333,56.6666667 L13.3333333,50 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

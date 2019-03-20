@@ -1,0 +1,15 @@
+.main-body{
+   background-image:  url(../../resourse/media/backgound.png);
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 100vh;
+}
+h2, h1{
+   color: white;
+   text-align: center
+}
+.secondSlide{
+   height: 588px;
+}
+

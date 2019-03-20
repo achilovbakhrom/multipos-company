@@ -3,6 +3,7 @@ import {BrowserRouter, Route ,Switch} from 'react-router-dom';
 import App from "../components/app";
 import Hrm from "../containers/hrm/index"
 import Home from '../components/Company/Info';
+import adminPanel from '../containers/AdminPanel/AdminPanel';
 const PublicRoute = ()=>{
     return(
         <div>
@@ -15,6 +16,10 @@ const PublicRoute = ()=>{
                     <Route
                         path="/hrm"
                         component={Hrm}
+                    />
+                    <Route 
+                        path="/admin-panel"
+                        component={adminPanel}
                     />
                     {/*<Route*/}
                       {/*path="/home"*/}
