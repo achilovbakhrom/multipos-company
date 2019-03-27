@@ -8,7 +8,6 @@ import IconEdit from "@material-ui/icons/Edit";
 import IconDelete from "@material-ui/icons/Delete";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
@@ -34,7 +33,7 @@ TabContainer.propTypes = {
 };
 
 function LinkTab(props) {
-  return <Tab onClick={event => event.preventDefault()} {...props} />;
+  return <Tab onClick={event => event.preventDefault()} {...props}  style={{outline:'none'}}/>;
 }
 const styles = theme => ({
   root: {

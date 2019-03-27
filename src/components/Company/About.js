@@ -119,7 +119,6 @@ class AboutCompany extends Component {
                       true
                     ) : (false)}
                     name={"name"}
-                    id='outlined-bare'
                     value={fields.name}
                     variant='outlined'
                     onChange={this.handleInput}

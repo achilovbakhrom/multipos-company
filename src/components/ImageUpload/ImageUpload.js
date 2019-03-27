@@ -114,7 +114,7 @@ class ImageUpload extends React.Component {
           )}
           <div className={this.state.showCropper ? 'croppie_wrapper active' : 'croppie_wrapper'}>
             <div className={'croppie'}>
-              <Button style={{backgroundColor: '#49a4de', color:"white"}} onClick={this.closeCrop}>
+              <Button style={{backgroundColor: '#49a4de', color:"white",marginBottom:'10px'}} onClick={this.closeCrop}>
                 <Done />
               </Button>
             </div>

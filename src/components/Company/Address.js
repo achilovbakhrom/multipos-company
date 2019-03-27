@@ -60,27 +60,6 @@ class AddressCompany extends React.Component {
     }),()=>{this.props.onChange(this.state)});
   }
 
-  componentDidMount(){
-    // if(this.props.country && this.props.country.length>0){
-    //   this.setState({
-    //     company:{
-    //       address_information: {
-    //         country:this.props.country
-    //       }
-    //     }
-    //   });
-    // }
-    // if(this.props.city && this.props.city.length>0){
-    //   this.setState({
-    //     company:{
-    //       address_information: {
-    //         city:this.props.city
-    //       }
-    //     }
-    //   });
-    // }
-  }
-
 
   render() {
     let fields = this.props.fields;
