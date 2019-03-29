@@ -19,6 +19,9 @@ const DefaultTheme = createMuiTheme({
     },
     error: theme.palette.error,
   },
+  typography:{
+    useNextVariants: true,
+  },
   overrides: {
     MuiTypography: {
       h6: {
