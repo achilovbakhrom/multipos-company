@@ -4,6 +4,8 @@ import App from "../components/app";
 import Hrm from "../containers/hrm/index"
 import Home from '../components/Company/Info';
 import adminPanel from '../containers/AdminPanel/AdminPanel';
+import Warehouse from '../containers/warehouse/';
+import Entities from '../containers/entities'
 const PublicRoute = ()=>{
     return(
         <div>
@@ -20,6 +22,14 @@ const PublicRoute = ()=>{
                     <Route 
                         path="/admin-panel"
                         component={adminPanel}
+                    />
+                    <Route
+                        path="/warehouse"
+                        component={Warehouse}
+                    />
+                    <Route
+                        path="/entities"
+                        component={Entities}
                     />
                     {/*<Route*/}
                       {/*path="/home"*/}
