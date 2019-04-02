@@ -5,6 +5,9 @@ import ImageUpload from "../ImageUpload/ImageUpload";
 import Button from "@material-ui/core/Button/Button";
 import ValidationError from "../../components/errors/error-messages";
 import Typography from '@material-ui/core/Typography';
+import moment from 'moment';
+import MomentUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider, DatePicker } from 'material-ui-pickers';
 
 
 class ContactPerson extends Component {
@@ -20,13 +23,25 @@ class ContactPerson extends Component {
       activeBtn: true,
       contact_info:{
         company_contact_persons:{
-
+          birth_date:moment(new Date()).format('DD/MM/YYYY'),
         }
       }
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleFile = this.handleFile.bind(this);
+    this.handleDate = this.handleDate.bind(this);
+  }
+
+  handleDate(e){
+    this.setState((prevState)=>({
+      contact_info:{
+        company_contact_persons:{
+          ...prevState.contact_info.company_contact_persons,
+          birth_date:moment(e).format('DD/MM/YYYY'),
+        }
+      }
+    }));
   }
 
   handleInput(event) {
@@ -42,10 +57,10 @@ class ContactPerson extends Component {
     }),()=>{this.props.onChange(this.state.contact_info)});
   }
 
-  handleFile(file,contactPreview){
-    this.props.onChange('contact_image',file);
-    this.props.onChange('contact_preview',contactPreview);
-  }
+  // handleFile(file,contactPreview){
+  //   this.props.onChange('contact_image',file);
+  //   this.props.onChange('contact_preview',contactPreview);
+  // }
   handleFile(file, contactPreview) {
     this.setState((prevState)=>({
       contact_info:{
@@ -83,7 +98,7 @@ class ContactPerson extends Component {
     let fields = this.props.fields;
     let errors = this.props.errors;
     let submitted = this.props.submitted;
-    // console.log(this.props);
+    let {birth_date} = this.state.contact_info.company_contact_persons;
     return (
       <div>
         <Grid container direction="column" style={{ paddingTop: 8 }}>
@@ -264,18 +279,26 @@ class ContactPerson extends Component {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <TextField
-                    fullWidth
-                    name={"birth_date"}
-                    error={submitted && errors.birth_date?(
-                      true
-                    ):(false)}
-                    value={fields.birth_date}
-                    type="date"
-                    onChange={this.handleInput}
-                    id='outlined-bare'
-                    variant='outlined'
-                  />
+                  <MuiPickersUtilsProvider utils={MomentUtils}>
+                    <div className="picker">
+                      <DatePicker
+                        keyboard
+                        clearable
+                        name={'birth_date'}
+                        variant="outlined"
+                        format={'DD/MM/YYYY'}
+                        fullWidth
+                        placeholder="dd/mm/yyyy"
+                        mask={value =>
+                          value ? [/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/] : []
+                        }
+                        value={moment(birth_date,'DD/MM/YYYY').toDate()}
+                        onChange={this.handleDate}
+                        disableOpenOnEnter
+                        animateYearScrolling={false}
+                      />
+                    </div>
+                  </MuiPickersUtilsProvider>
                   {submitted && errors.birth_date &&
                   <ValidationError>
                     {errors.birth_date}

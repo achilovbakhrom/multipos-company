@@ -1,23 +1,17 @@
 import React,{Component} from 'react';
-import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
-import Plus from "@material-ui/icons/add";
-import Button from '@material-ui/core/Button';
 import CustomScroll from 'react-custom-scroll';
-import EmItem from '../../components/Employee/employee-item';
+import ScrollbarHOC from '../../containers/Employee/ScrollbarHOC';
 import 'react-custom-scroll/dist/customScroll.css';
+
 const styles = theme=>({
   scrollbar_wrapper:{}
 });
 
 
-class CrmScroll extends Component{
-  renderItems(){
-    let arr = [];
-    for(let i = 0;i<25;i++){
-      arr.push(<EmItem key={i} />);
-    }
-    return arr;
+class Scrollbar extends Component{
+  constructor(props){
+    super(props);
   }
   render(){
     const {classes} = this.props;
@@ -25,7 +19,7 @@ class CrmScroll extends Component{
       <div className={classes.scrollbar_wrapper}>
         <div style={{maxHeight:'100%'}}>
           <CustomScroll heightRelativeToParent={'90vh'}>
-            {this.renderItems()}
+            {this.props.items}
           </CustomScroll>
         </div>
       </div>
@@ -33,4 +27,4 @@ class CrmScroll extends Component{
   };
 }
 
-export default withStyles(styles)(CrmScroll);
+export default withStyles(styles)(ScrollbarHOC(Scrollbar));

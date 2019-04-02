@@ -1,40 +1,29 @@
 import React, { Component } from "react";
-import HeaderComponent from "../../components/Header/HeaderComponent";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import CrmScrollbar from "../Crm/crm-scrollbar";
+import Scrollbar from "../../../components/Common/Scrollbar";
 import Button from "@material-ui/core/Button";
 import IconDone from "@material-ui/icons/Done";
 import IconCancel from "@material-ui/icons/Close";
 import { FormValidation } from "calidation";
 import { config } from "./validation/crm-validation";
-import CrmCompany from "../../components/Crm/company";
+import CrmCompany from "../../../components/Crm/company";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import PropTypes from "prop-types";
-import ContactPersons from '../../components/Company/Info/ContactPersons';
+import ContactPersons from '../../../components/Company/Info/ContactPersons';
 
-const CompanyBackgroundComponent = styled.div`
-  height: 100vh;
-  width: 100%;
-  background-color: inherit;
- 
-`;
 
 const ContentSubmitButton = styled(Paper)`
     width: 100%;
     height: 50px;
 `;
-const ComponentsWrapper = styled.div`
-  display: flex;
-  width:100%;
-  padding:20px;
-`;
+
 
 const styles = theme => ({
   root: {
@@ -107,13 +96,10 @@ class Crm extends Component {
     const {value} = this.state;
     return (
       <div className={classes.root}>
-        <CompanyBackgroundComponent>
-          <HeaderComponent/>
-          <ComponentsWrapper>
             <Grid style={{ paddingTop: 8 }} container spacing={24}>
               <Grid item xs={3} sm={3}>
                 <Paper style={{ height: "100vh" }}>
-                  <CrmScrollbar/>
+                  <Scrollbar/>
                 </Paper>
               </Grid>
               <Grid item xs={9} sm={9}>
@@ -156,8 +142,6 @@ class Crm extends Component {
                 </Paper>
               </Grid>
             </Grid>
-          </ComponentsWrapper>
-        </CompanyBackgroundComponent>
       </div>
     );
   }

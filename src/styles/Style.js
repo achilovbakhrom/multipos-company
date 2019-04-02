@@ -3,6 +3,7 @@ import red from '@material-ui/core/colors/red';
 
 const PrimaryLightColor = '#b7dffd';
 const PrimaryColor = '#49a4de';
+const DarkGray = '#84adc6';
 const SecondaryLightColor = '#d7b7fd';
 const SecondaryColor = '#6200ee';
 const SecondaryDarkColor = '#6200ee';
@@ -20,6 +21,7 @@ export default {
       light: PrimaryLightColor,
       main: PrimaryColor,
       dark: PrimaryColor,
+      darkGray:DarkGray,
       contrastText: WhiteColor,
     },
     secondary: {
