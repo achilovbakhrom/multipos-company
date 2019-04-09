@@ -161,7 +161,7 @@ class Hrm extends Component {
             <Grid style={{ paddingTop: 8 }} container spacing={24}>
               <Grid item xs={3} sm={3}>
                 <Paper style={{ height: "100vh" }}>
-                  <Scrollbar  btnText = {'Add employee'}/>
+                  <Scrollbar  showBtn btnText = {'Add employee'}/>
                 </Paper>
               </Grid>
               <Grid item xs={9} sm={9}>

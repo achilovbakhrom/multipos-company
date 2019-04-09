@@ -1,6 +1,10 @@
 import React,{Component} from 'react';
 import Button from "@material-ui/core/Button/index";
 import { withStyles } from '@material-ui/core/styles/index';
+import Select from "@material-ui/core/Select";
+import BootstrapInput from "../../Common/BootstrapInput";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
 
 const styles = theme =>({
   btns_wrapper:{
@@ -30,13 +34,38 @@ const styles = theme =>({
     textAlign:'center',
     color:"#fff",
   },
+  currency_select:{
+    marginBottom:'20px',
+  }
 });
 
 class PaymentType extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      type:'',
+    }
+  }
   render(){
     const {classes} = this.props;
     return(
       <div className={classes.btns_wrapper}>
+        <FormControl className={classes.currency_select}>
+          <Select
+            value={this.state.type}
+            onChange={this.handleChange}
+            displayEmpty
+            className={classes.selectEmpty}
+            input={<BootstrapInput name={'type'} value={this.state.type} />}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Usd</MenuItem>
+            <MenuItem value={20}>Euro</MenuItem>
+            <MenuItem value={30}>Rub</MenuItem>
+          </Select>
+        </FormControl>
         <div className={classes.buttons_heading}>
           Payment Type
         </div>
