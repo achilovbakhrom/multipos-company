@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
 import Plus from "@material-ui/icons/add";
 import Button from '@material-ui/core/Button';
@@ -9,7 +8,6 @@ import 'react-custom-scroll/dist/customScroll.css';
 const styles = theme=>({
     scrollbar_wrapper:{}
 });
-
 
 class Employee extends Component{
   renderItems(){

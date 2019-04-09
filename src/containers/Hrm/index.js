@@ -164,7 +164,7 @@ class Hrm extends Component {
               </Paper>
             </Grid>
             <Grid item xs={9} sm={9}>
-              <Paper style={{ height: "100vh" }}>
+              <Paper style={{ height: "120vh" }}>
                 <FormValidation onSubmit={this.onSubmit} config={config}>
                   {({ fields, errors, submitted }) => (
                     <>
