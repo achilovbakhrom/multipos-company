@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import App from "../components/app";
 import Hrm from "../containers/Hrm/index";
-import Crm from "../containers/Crm/index";
+import CrmWrapper from '../containers/Crm/crm-wrapper';
 import AdminPanel from "../containers/AdminPanel/AdminPanel";
 import Establishment from "../containers/Establishment/index";
 import posed, { PoseGroup } from "react-pose";
@@ -31,7 +31,7 @@ const PublicRoute = () => {
                   />
                   <Route
                     path="/crm"
-                    component={Crm}
+                    component={CrmWrapper}
                   />
                   <Route
                     path="/admin-panel"
