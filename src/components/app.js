@@ -17,7 +17,7 @@ const RouteContainer = posed.div({
 });
 
 const CompanyBackgroundComponent = styled.div`
-  height: 100vh;
+  // height: 100vh;
   width: 100%;
   background-color: inherit;
 `;
