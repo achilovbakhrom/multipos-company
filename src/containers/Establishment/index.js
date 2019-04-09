@@ -129,12 +129,12 @@ class Establishment extends Component{
                         <Grid style={{ paddingTop: 8 }} container spacing={24}>
                             <Grid item xs={3} sm={3}>
                                 <Paper>
-                                    <Scrollbar />
+                                    <Scrollbar showBtn btnText={'Establishment'} />
                                 </Paper>
                             </Grid>
                             <Grid item xs={2} sm={2}>
                                 <Paper>
-                                    <Scrollbar/>
+                                    <Scrollbar showBtn btnText={'Add Pos'}/>
                                 </Paper>
                             </Grid>
                             <Grid item xs={7} sm={7}>

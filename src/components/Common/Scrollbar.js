@@ -18,7 +18,7 @@ class Scrollbar extends Component{
     return(
       <div className={classes.scrollbar_wrapper}>
         <div style={{maxHeight:'100%'}}>
-          <CustomScroll heightRelativeToParent={'90vh'}>
+          <CustomScroll heightRelativeToParent={'73vh'}>
             {this.props.items}
           </CustomScroll>
         </div>
