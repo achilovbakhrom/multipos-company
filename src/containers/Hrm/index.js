@@ -7,7 +7,6 @@ import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import Select from "@material-ui/core/Select";
 import Paper from "@material-ui/core/Paper";
-// import EmployeeScrollbar from "../Employee/employee-scrollbar";
 import Scrollbar from '../../components/Common/Scrollbar';
 import Button from "@material-ui/core/Button";
 import IconDone from "@material-ui/icons/Done";
