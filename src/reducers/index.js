@@ -6,6 +6,7 @@ import establishmentReducer from './add-establishment-reducer';
 const rootReducer = combineReducers({
     addedCompany:companyReducer,
     addedEmployee:employeeReducer,
+    addedEstablishment:establishmentReducer,
 });
 
 export default rootReducer;
