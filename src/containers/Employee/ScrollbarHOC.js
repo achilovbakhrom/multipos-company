@@ -19,6 +19,7 @@ export default function WrapperForScrollbar(WrappedComponent){
       console.log('test');
     }
     renderButton(){
+      let {btnText} = this.props;
       return(
         <Button style={{
           backgroundColor: 'white',
@@ -29,10 +30,12 @@ export default function WrapperForScrollbar(WrappedComponent){
           padding:'20px 0',
           borderBottom:'1px solid #ededed',
         }}
-                onClick={()=>{this.testMethod()}}
+          onClick={()=>{this.testMethod()}}
         >
           <Plus />
-          Add employee
+          {btnText? (
+            btnText
+          ):('')}
         </Button>
       );
     }

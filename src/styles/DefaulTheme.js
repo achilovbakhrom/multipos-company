@@ -6,6 +6,7 @@ function pxToRem(value) {
 const DefaultTheme = createMuiTheme({
   palette: {
     primary: {
+      header: theme.palette.primary.header,
       light: theme.palette.primary.light,
       main: theme.palette.primary.main,
       dark: theme.palette.primary.dark,
@@ -18,7 +19,11 @@ const DefaultTheme = createMuiTheme({
       dark: theme.palette.secondary.dark,
       contrastText: theme.common.white,
     },
+    success:theme.palette.success,
     error: theme.palette.error,
+  },
+  common:{
+    gray:theme.common.gray,
   },
   typography:{
     useNextVariants: true,

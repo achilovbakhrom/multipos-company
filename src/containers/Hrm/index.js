@@ -59,7 +59,7 @@ const Positions = [
 const CompanyBackgroundComponent = styled.div`
   height: 100vh;
   width: 100%;
-  background-color: inherit;
+  // background-color: inherit;
  
 `;
 
@@ -161,8 +161,7 @@ class Hrm extends Component {
             <Grid style={{ paddingTop: 8 }} container spacing={24}>
               <Grid item xs={3} sm={3}>
                 <Paper style={{ height: "100vh" }}>
-                  {/*<EmployeeScrollbar/>*/}
-                  <Scrollbar showBtn/>
+                  <Scrollbar  btnText = {'Add employee'}/>
                 </Paper>
               </Grid>
               <Grid item xs={9} sm={9}>
