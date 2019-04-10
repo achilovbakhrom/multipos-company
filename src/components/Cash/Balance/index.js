@@ -31,6 +31,7 @@ const styles = theme => ({
   root: {
     width: '100%',
     overflowX: 'auto',
+    height:'100%',
   },
   table: {
     minWidth: 700,
@@ -39,6 +40,7 @@ const styles = theme => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.background.default,
     },
+
   },
 });
 

@@ -5,7 +5,7 @@ import Hrm from "../containers/Hrm/index";
 import CrmWrapper from '../containers/Crm/crm-wrapper';
 import AdminPanel from "../containers/AdminPanel/AdminPanel";
 import Cash from '../containers/Cash';
-import Store from '../containers/Store';
+// import Store from '../containers/Store';
 import posed, { PoseGroup } from "react-pose";
 
 const RouteContainer = posed.div({
@@ -42,10 +42,10 @@ const PublicRoute = () => {
                     path="/admin-panel"
                     component={AdminPanel}
                   />
-                  <Route
-                    path="/store"
-                    component={Store}
-                  />
+                  {/*<Route*/}
+                  {/*  path="/store"*/}
+                  {/*  component={Store}*/}
+                  {/*/>*/}
                 </Switch>
               </RouteContainer>
             </PoseGroup>
