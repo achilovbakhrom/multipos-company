@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles/index";
-import FormControl from "@material-ui/core/FormControl/index";
 import Paper from "@material-ui/core/Paper/index";
-import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button/index";
 import Grid from "@material-ui/core/Grid/index";
 import Backspace from "@material-ui/icons/Backspace";
@@ -11,6 +9,7 @@ const styles = theme => ({
   root: {
     display: "flex",
     flexWrap: "wrap",
+    height:'100%',
   },
   formControl: {
     flexGrow: 1,
@@ -21,7 +20,10 @@ const styles = theme => ({
   },
   colored_input: {
     "& input": {
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
+      "&::placeholder":{
+        color: theme.palette.primary.main,
+      }
     }
   },
   input_field: {
@@ -34,6 +36,10 @@ const styles = theme => ({
       border: "none",
       marginBottom: "20px",
       fontSize: "22px"
+    },
+    "& label":{
+      fontSize:'12px',
+      marginBottom:0,
     }
   },
   numpad_wrapper: {
@@ -75,12 +81,15 @@ class CashSelects extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      balance_due:"75000000",
+      balance_diff:"",
       payment_value: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.deleteNumbers = this.deleteNumbers.bind(this);
     this.handleKeypress = this.handleKeypress.bind(this);
     this.resetNumbers = this.resetNumbers.bind(this);
+    this.formatPrice = this.formatPrice.bind(this);
   }
 
   componentDidMount() {
@@ -126,6 +135,25 @@ class CashSelects extends Component {
       });
     }
   }
+  formatPrice(price) {
+      if(!price) price = 0;
+      let decimal = 0;
+      let separator = ' ';
+      let decpoint = '.';
+
+      let r = parseFloat(price);
+
+      let exp10 = Math.pow(10, decimal);
+      r = Math.round(r * exp10) / exp10;
+
+      let rr = Number(r).toFixed(decimal).toString().split('.');
+
+      let b = rr[0].replace(/(\d{1,3}(?=(\d{3})+(?:\.\d|\b)))/g, "\$1" + separator);
+
+      r = (rr[1] ? b + decpoint + rr[1] : b);
+
+      return r;
+  }
   resetNumbers(){
    this.setState({
      payment_value:""
@@ -133,28 +161,29 @@ class CashSelects extends Component {
   }
   render() {
     const { classes } = this.props;
+
     return (
       <Paper className={classes.root}>
         <div className={classes.numpad_wrapper}>
           <div className={classes.input_fields}>
             <div className={classes.input_field}>
-              <Typography variant={"h6"}>
+              <label>
                 Balance due
-              </Typography>
-              <input type="text"/>
+              </label>
+              <input type="text" name={'balance_due'} placeholder={'75000000'} value={this.state.balance_due} onChange={() => {}}/>
             </div>
             <div className={classes.input_field}>
-              <Typography variant={"h6"}>
+              <label>
                 Balance
-              </Typography>
-              <input type="text"/>
+              </label>
+              <input type="text" name={'balance_diff'} placeholder={'0'} value={this.state.balance_diff} onChange={() => {}}/>
             </div>
             <div className={`${classes.input_field} ${classes.colored_input}`}>
-              <Typography variant={"h6"}>
+              <label>
                 Payment
-              </Typography>
+              </label>
               <div className={classes.payment_wrapper}>
-                <input type="text" name={"payment"} value={this.state.payment_value} onChange={() => {
+                <input type="text" name={"payment"} value={this.state.payment_value} placeholder={'0'} onChange={() => {
                 }}/>
                 <Backspace onClick={this.deleteNumbers} className={classes.backspace_btn}/>
               </div>

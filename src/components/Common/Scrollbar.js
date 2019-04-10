@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import { withStyles } from "@material-ui/core";
 import CustomScroll from 'react-custom-scroll';
-import ScrollbarHOC from '../../containers/Employee/ScrollbarHOC';
+import ScrollbarHOC from '../../containers/Common/ScrollbarHOC';
 import 'react-custom-scroll/dist/customScroll.css';
 
 const styles = theme=>({
