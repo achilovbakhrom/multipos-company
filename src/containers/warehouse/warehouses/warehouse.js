@@ -2,7 +2,7 @@ import React,{ Component} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import SaveIcon from '@material-ui/icons/Add';
+import SaveIcon from '@material-ui/icons/add';
 import WarehouseForm from './warehouseForm';
 
 class Warehosue extends Component{
@@ -10,7 +10,7 @@ class Warehosue extends Component{
         return (
             <Grid container spacing={24}>
                 <Grid item xs={3} sm={3}>
-                    <Paper style={{ height: "80vh" }}>
+                    <Paper>
                         <Button size="large" style={{width: "100%", height: 70}} variant="outlined">
                             <SaveIcon size="large" />
                               Add Warehouse
@@ -18,7 +18,7 @@ class Warehosue extends Component{
                     </Paper>
                 </Grid>
                 <Grid item xs={9} sm={9}>
-                    <Paper style={{height: "80vh"}}> <WarehouseForm/> </Paper>
+                    <Paper> <WarehouseForm/> </Paper>
                 </Grid>
             </Grid>
          );

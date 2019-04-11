@@ -19,11 +19,19 @@ const DefaultTheme = createMuiTheme({
     },
     error: theme.palette.error,
   },
+  typography:{
+    useNextVariants: true,
+  },
   overrides: {
     MuiTypography: {
       h6: {
         fontSize: pxToRem(14),
+        fontWeight:'bold',
       },
+      h5:{
+        fontWeight:'bold',
+      }
+
     }
   },
 });

@@ -6,6 +6,7 @@ import NoSsr from '@material-ui/core/NoSsr';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Warehouses from '../warehouses/warehouse';
+import States from '../state';
 
 function TabContainer(props) {
   return (
@@ -50,14 +51,14 @@ class NavTabs extends React.Component {
               <LinkTab label="Warehouses" href="page1" style={{textDecoration: "none"}}/>
               <LinkTab label="State" href="page2" style={{textDecoration: "none"}}/>
               <LinkTab label="Transfer" href="page3" style={{textDecoration: "none"}}/>
-              <LinkTab label="Waste/Surplus" href="page3" style={{textDecoration: "none"}}/>
+              <LinkTab label="Waste/Surplus" href="page4" style={{textDecoration: "none"}}/>
             </Tabs>
           </AppBar>
           {value === 0 && <TabContainer> <Warehouses/> </TabContainer>}
-          {value === 1 && <TabContainer>State</TabContainer>}
+          {value === 1 && <TabContainer> <States/> </TabContainer>}
           {value === 2 && <TabContainer>Transfer</TabContainer>}
           {value === 3 && <TabContainer>Waste/Surplus</TabContainer>}
-
+        
         </div>
       </NoSsr>
     );

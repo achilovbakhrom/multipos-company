@@ -18,6 +18,7 @@ const styles = theme => ({
   },
   office_address:{
     paddingTop:'20px',
+    position:'relative',
   },
 });
 

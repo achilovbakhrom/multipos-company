@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
-import Info from "./Company/Info";
-import AddCompany from "../containers/company/AddCompany/index";
-import AddList from "../containers/company/AddCompanyList/AddList";
+import Info from "../containers/Company/Info";
+import AddCompany from "../containers/Company/AddCompany/index";
+import AddList from "../containers/Company/AddCompanyList/AddList";
 import styled from "styled-components";
 import Paper from "@material-ui/core/Paper";
 import HeaderComponents from "../components/Header/HeaderComponent";
-import AddCompanyButton from "../components/Button/AddCompanyButton";
-import Logo from "../resourse/media/company.svg";
+import SingleContact from '../components/Company/Info/Single/contactSingle';
+import SingleRequisite from '../components/Company/Info/Single/requisiteSingle';
+import StartComponent from '../components/Company/StartComponent';
+import posed, { PoseGroup } from 'react-pose';
+
+const RouteContainer = posed.div({
+  enter: { opacity: 1, delay: 350, beforeChildren: true,height:'100%' },
+  exit: { opacity: 0 }
+});
 
 const CompanyBackgroundComponent = styled.div`
   height: 100vh;
@@ -43,15 +50,10 @@ const ComponentsWrapper = styled.div`
   width:100%;
   padding:20px;
 `;
-const CenteredDiv = styled.div`
-  display: flex;
-  width:100%;
-  height:100%;
-  align-items:stretch;
-  justify-content:center;
-`;
+
 export default class App extends Component {
   render() {
+    const {url} = this.props.match;
     return (
       <BrowserRouter>
         <Route
@@ -68,11 +70,17 @@ export default class App extends Component {
                     </ContentList>
                     <ContentCompany>
                       <ContentCompanyContainer>
-                        <Switch location={location}>
-                          <Route exact path={"/company/add-company"} component={AddCompany}/>
-                          <Route exact path={"/company"} component={Component1}/>
-                          <Route exact path={"/company/info"} component={Info}/>
-                        </Switch>
+                      <PoseGroup>
+                        <RouteContainer key={location.pathname}>
+                          <Switch location={location}>
+                            <Route exact path={`${url}/add-company`} component={AddCompany}/>
+                            <Route exact path={`${url}`} component={StartComponent}/>
+                            <Route exact path={`${url}/info`} component={Info}/>
+                            <Route exact path={`${url}/info/contact/:id`} component={SingleContact}/>
+                            <Route exact path={`${url}/info/requisite/:id`} component={SingleRequisite}/>
+                          </Switch>
+                        </RouteContainer>
+                      </PoseGroup>
                       </ContentCompanyContainer>
                     </ContentCompany>
                   </ComponentsWrapper>
@@ -84,24 +92,5 @@ export default class App extends Component {
     );
   }
 }
-const Component1 = () => (
-    <CenteredDiv>
-      <div style={{alignSelf:'center'}}>
-        <div className="text-center">
-          <Logo />
-        </div>
-        <p>
-          Add or select a company to view information.
-        </p>
-        <Link to='/company/add-company' style={{ textDecoration: "none" }}>
-          <AddCompanyButton/>
-        </Link>
-      </div>
-    </CenteredDiv>
-);
-// const Home = () => (
-//   <div className={'home-index'}>
-//       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, quisquam!
-//   </div>
-// );
+
 

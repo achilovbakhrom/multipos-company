@@ -38,3 +38,23 @@ img {
     justify-content: center;
     flex-direction: column;
 }
+
+.rcs-inner-handle {
+    background-color:#4787f4!important;
+}
+.react-datepicker-wrapper,.react-datepicker-wrapper div{
+    width:100%;
+    display:block;
+    line-height:1.1875em;
+}
+
+
+.cm-input{
+    font-size:1rem;
+    display:block;
+
+    border:1px solid rgba(0, 0, 0, 0.23);
+}
+.picker svg{
+    color:rgb(73, 164, 222);
+}

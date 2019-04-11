@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
@@ -8,13 +8,13 @@ import IconEdit from "@material-ui/icons/Edit";
 import IconDelete from "@material-ui/icons/Delete";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { withStyles } from "@material-ui/core";
-import ContactInfo from './CompanyInfo';
-import ContactPersons from './ContactPersons';
-import BankRequisites from './BankRequisites';
+import ContactInfo from "../../../components/Company/Info/CompanyInfo";
+import ContactPersons from "../../../components/Company/Info/ContactPersons";
+import BankRequisites from "../../../components/Company/Info/BankRequisites";
+
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -34,59 +34,62 @@ TabContainer.propTypes = {
 };
 
 function LinkTab(props) {
-  return <Tab onClick={event => event.preventDefault()} {...props} />;
+  return <Tab onClick={event => event.preventDefault()} {...props} style={{ outline: "none" }}/>;
 }
+
 const styles = theme => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 0,
     backgroundColor: theme.palette.background.paper
   }
 });
 const topTabStyles = {
-    display:'flex',
-    alignItems:'center',
-    borderRadius:0,
+  display: "flex",
+  alignItems: "center",
+  borderRadius: 0
 };
 const flexItem = {
-  display: 'flex',
-  width:'100%',
-  padding: '0 20px',
-  justifyContent:'space-between',
+  display: "flex",
+  width: "100%",
+  padding: "0 20px",
+  justifyContent: "space-between"
 };
 
-class Index extends Component{
-  constructor(props){
+class Index extends Component {
+  constructor(props) {
     super(props);
-    this.state={
-      value:1,
+    this.state = {
+      value: 0
     };
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange = (event, value) => {
     this.setState({ value });
   };
-  render(){
+
+  render() {
     const { value } = this.state;
     const { classes } = this.props;
-    return(
+    return (
       <div className={classes.root}>
-        <ContentSubmitButton style = {topTabStyles}>
+        <ContentSubmitButton style={topTabStyles}>
           <div style={flexItem}>
-          <Typography variant={"h5"} style={{fontWeight:'bold'}}>
-            Company title
-          </Typography>
-          <div className={'btns-wrapper'}>
-            <Button
-              type="button"
-              style={{ marginLeft: "90" }}>
-              <IconEdit style={{ color: "#4086f4" }}/>
-            </Button>
-            <Button
-              type="button"
-              style={{ marginLeft: "90" }}>
-              <IconDelete style={{ color: "#d12212" }}/>
-            </Button>
-          </div>
+            <Typography variant={"h5"} style={{ fontWeight: "bold" }}>
+              Company title
+            </Typography>
+            <div className={"btns-wrapper"}>
+              <Button
+                type="button"
+                style={{ marginLeft: "90" }}>
+                <IconEdit style={{ color: "#4086f4" }}/>
+              </Button>
+              <Button
+                type="button"
+                style={{ marginLeft: "90" }}>
+                <IconDelete style={{ color: "#d12212" }}/>
+              </Button>
+            </div>
           </div>
         </ContentSubmitButton>
         <AppBar position="static" color="inherit">
@@ -96,15 +99,16 @@ class Index extends Component{
             <LinkTab label="Bank Requisites"/>
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer><ContactInfo /></TabContainer>}
-        {value === 1 && <TabContainer><ContactPersons /></TabContainer>}
-        {value === 2 && <TabContainer><BankRequisites /></TabContainer>}
+        {value === 0 && <TabContainer><ContactInfo/></TabContainer>}
+        {value === 1 && <TabContainer><ContactPersons/></TabContainer>}
+        {value === 2 && <TabContainer><BankRequisites/></TabContainer>}
       </div>
     );
   }
 }
+
 Index.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default connect(null,null)(withStyles(styles)(Index));
+export default connect(null, null)(withStyles(styles)(Index));

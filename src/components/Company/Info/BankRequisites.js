@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
+import {Link} from 'react-router-dom';
 import styled from "styled-components";
 import Paper from "@material-ui/core/Paper";
 import PhoneTalk from "@material-ui/icons/PhoneInTalk";
@@ -10,7 +11,11 @@ import ContactLink from './ContactItem';
 const styles = theme => ({
   bank_requisites: {
     "&  h5": {
-      fontWeight: "bold"
+      fontWeight: "bold",
+      '& a':{
+        color:"#000",
+        textDecoration:'none',
+      },
     },
     "& img":{
       borderRadius:'6px',
@@ -22,7 +27,9 @@ const styles = theme => ({
 const ContactItem = styled(Paper)`
     padding:15px;
     margin-bottom:20px;
-box-shadow:none;
+    padding-bottom:50px;
+    box-shadow:none!important;
+    border:1px solid #ededed;
 `;
 
 class BankRequisites extends Component {
@@ -36,7 +43,9 @@ class BankRequisites extends Component {
               <Grid container spacing={24}>
                 <Grid item md={12}>
                   <Typography variant={"h5"}>
+                    <Link to={'/company/info/requisite/1'}>
                     Johny Depp
+                    </Link>
                   </Typography>
                   <Typography variant={"h6"}>
                     CEO

@@ -8,10 +8,17 @@ import defaultImage from "../../../resourse/media/avatar.png";
 import PhoneTalk from "@material-ui/icons/PhoneInTalk";
 import Email from "@material-ui/icons/Email";
 import ContactLink from './ContactItem';
+import AddItem from "../../officeAdress/address-item";
+import {Link} from 'react-router-dom';
 const styles = theme => ({
+
   contact_persons: {
     "&  h5": {
-      fontWeight: "bold"
+      fontWeight: "bold",
+      "&>a":{
+        color:"#000",
+        textDecoration:'none',
+      }
     },
     "& img":{
       borderRadius:'6px',
@@ -23,6 +30,9 @@ const styles = theme => ({
 const ContactItem = styled(Paper)`
     padding:15px;
     margin-bottom:20px;
+    padding-bottom:50px;
+    box-shadow:none!important;
+    border:1px solid #ededed;
   
 `;
 
@@ -40,7 +50,9 @@ class ContactPersons extends Component {
                 </Grid>
                 <Grid item md={9}>
                   <Typography variant={"h5"}>
-                    Johny Depp
+                    <Link to={'/company/info/contact/1'}>
+                      Johny Depp
+                    </Link>
                   </Typography>
                   <Typography variant={"h6"}>
                     CEO

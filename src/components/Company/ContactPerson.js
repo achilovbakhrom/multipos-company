@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button/Button";
 import ValidationError from "../../components/errors/error-messages";
 import Typography from '@material-ui/core/Typography';
 
+
 class ContactPerson extends Component {
   constructor(props) {
     super(props);

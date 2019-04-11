@@ -85,7 +85,7 @@ class AboutCompany extends Component {
       <div>
         <Grid container direction="column" style={{ paddingTop: 8 }}>
           <Grid container direction="row" spacing={24}>
-            <Grid item xs={6}>
+            <Grid item xs={3}>
               <Grid
                 container direction='column'>
                 <Grid item>
@@ -105,7 +105,7 @@ class AboutCompany extends Component {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={9}>
               <Grid container direction='column'>
                 <Grid item>
                   <Typography variant={"h6"} gutterBottom>
@@ -119,7 +119,6 @@ class AboutCompany extends Component {
                       true
                     ) : (false)}
                     name={"name"}
-                    id='outlined-bare'
                     value={fields.name}
                     variant='outlined'
                     onChange={this.handleInput}
@@ -131,12 +130,7 @@ class AboutCompany extends Component {
                   }
                 </Grid>
               </Grid>
-            </Grid>
-          </Grid>
-          <Grid container justify='center' style={{ paddingTop: 40 }}>
-            <Grid item xs={12}>
-              <Grid
-                container direction='column'>
+              <Grid container direction={'column'} style={{paddingTop:20}}>
                 <Grid item>
                   <Typography variant={"h6"} gutterBottom>
                     Business Occupation
