@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 import './adminstyle.css';
 import avatar from '../../resourse/media/profilePicture.jpg'
 import MultipossLogo from '../../resourse/media/MultipossLogo.svg'
-import Establishment from '../../resourse/media/establishment.svg'
+import Store from '../../resourse/media/establishment.svg'
 import Company from '../../resourse/media/cmp.svg'
 import Dashboard from '../../resourse/media/dashboard.svg'
 import Managements from '../../resourse/media/managements.svg'
@@ -93,13 +93,13 @@ class AdminPanel extends Component{
                       </Link>
                   </Col>
                   <Col xs lg="3">
-                    <Link to="/establishment" style={{textDecoration: "none"}}>
+                    <Link to="/store" style={{textDecoration: "none"}}>
                         <Paper className={classes.paper}>
                         <br/>
-                          <Establishment/>
+                          <Store/>
                           <br/>
                           <br/>
-                          <h2>Establishment</h2>
+                          <h2>Store</h2>
                           <br/>
                         </Paper>
                       </Link>

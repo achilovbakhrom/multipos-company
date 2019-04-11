@@ -55,6 +55,7 @@
     "material-ui-icons": "^1.0.0-beta.36",
     "material-ui-pickers": "^2.2.4",
     "moment": "^2.24.0",
+    "polished": "^3.2.0",
     "prop-types": "^15.7.2",
     "react": "16.3.2",
     "react-bootstrap": "^1.0.0-beta.5",

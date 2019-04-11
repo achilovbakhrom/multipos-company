@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core";
-import styled from "styled-components";
 import Grid from "@material-ui/core/Grid";
 import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
@@ -32,7 +30,7 @@ class CrmCompany extends Component{
     this.handleInput = this.handleInput.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
+}
 
   handleInput(event){
     const name = event.target.name;

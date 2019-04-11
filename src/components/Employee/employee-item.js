@@ -23,10 +23,10 @@ class EmpItem extends Component{
               <img src={defaultImage} alt=""/>
             </Grid>
             <Grid item md={10}>
-              <Typography variant={'h5'}>
+              <Typography variant={'h6'}>
                 Lorem ipsum
               </Typography>
-              <Typography variant={'h6'}>
+              <Typography>
                 ceo
               </Typography>
             </Grid>

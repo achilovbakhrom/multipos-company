@@ -2,9 +2,11 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import App from "../components/app";
 import Hrm from "../containers/Hrm/index";
-import Crm from "../containers/Crm/index";
-import Warehouse from '../containers/warehouse/index'
+import CrmWrapper from '../containers/Crm/crm-wrapper';
 import AdminPanel from "../containers/AdminPanel/AdminPanel";
+import Cash from '../containers/Cash';
+import Warehouse from '../containers/warehouse'
+// import Store from '../containers/Store';
 import posed, { PoseGroup } from "react-pose";
 
 const RouteContainer = posed.div({
@@ -31,7 +33,11 @@ const PublicRoute = () => {
                   />
                   <Route
                     path="/crm"
-                    component={Crm}
+                    component={CrmWrapper}
+                  />
+                  <Route
+                    path="/cash"
+                    component={Cash}
                   />
                   <Route
                     path="/admin-panel"

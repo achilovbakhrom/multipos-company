@@ -6,7 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FilledInput from "@material-ui/core/FilledInput";
 import ValidationError from '../../components/errors/error-messages';
 import Typography from '@material-ui/core/Typography';
-
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 const CountryNames = [
   "Russia",
@@ -174,7 +174,7 @@ class AddressCompany extends React.Component {
                          onChange={this.handleInput}
                          fullWidth
                          name={'country'}
-                         input={<FilledInput  style={{ border: "solid 0.5px grey", backgroundColor: "white" }}/>}
+                         input={<FilledInput  style={{ border: "solid 0.5px grey", backgroundColor: "white", borderRadius:"5px" }}/>}
                        >
                          {CountryNames.map(country => (
                            <MenuItem key={country} value={country}>
