@@ -117,12 +117,12 @@ class TabComponent extends Component {
               <Button
                 type="submit"
                 style={{ marginLeft: "80%" }}>
-                <IconDone style={{ color: "#79e07c" }}/>
+                  <IconDone style={{ color: "#79e07c" }}/>
               </Button>
               <Button
                 type="button"
                 style={{ marginLeft: "90",marginTop:'10px' }}>
-                <Link to={'/Company'}>
+                <Link to={'/Company/info'}>
                   <IconCancel style={{ color: "#4086f4" }}/>
                 </Link>
               </Button>
