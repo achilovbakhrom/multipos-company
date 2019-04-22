@@ -146,6 +146,7 @@ class Hrm extends Component {
     //
     //   console.log("Something is wrong:", errors);
     // }
+    this.props.addEmployee(this.state);
     console.log(this.props);
   };
 

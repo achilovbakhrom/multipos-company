@@ -182,7 +182,6 @@ class ContactPerson extends Component {
                     {errors.first_name}
                   </ValidationError>
                   }
-
                 </Grid>
               </Grid>
             </Grid>

@@ -62,6 +62,7 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper
+
     },
 });
 const BootstrapInput = withStyles(theme => ({
@@ -115,7 +116,7 @@ class Store extends Component{
     };
 
     onSubmit = ({}) => {
-        this.props.addEstablishment(this.state);
+        this.props.addStore(this.state);
         console.log(this.props)
     };
 
@@ -371,4 +372,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {addEstablishment: addStore}) (withStyles(styles)(Store));
+export default connect(mapStateToProps, {addStore}) (withStyles(styles)(Store));

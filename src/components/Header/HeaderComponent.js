@@ -79,7 +79,7 @@ const SearchAppBar =(props) =>{
       <AppBar position="static">
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-            <Link to='/admin-panel' style={{color: 'inherit'}}>
+            <Link to={'/admin-panel'} style={{color: 'inherit'}}>
               <AppsIcon />
             </Link>
           </IconButton>

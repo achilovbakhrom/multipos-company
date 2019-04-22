@@ -30,7 +30,7 @@ class StartComponent extends Component {
           <div className="text-center">
             <Logo/>
           </div>
-          <p>
+          <p><br/><br/>
             Add or select a company to view information.
           </p>
           <Link to='/company/add-company' style={{ textDecoration: "none" }}>

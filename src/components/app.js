@@ -6,13 +6,13 @@ import AddList from "../containers/Company/AddCompanyList/AddList";
 import styled from "styled-components";
 import Paper from "@material-ui/core/Paper";
 import HeaderComponents from "../components/Header/HeaderComponent";
-import SingleContact from '../components/Company/Info/Single/contactSingle';
-import SingleRequisite from '../components/Company/Info/Single/requisiteSingle';
-import StartComponent from '../components/Company/StartComponent';
-import posed, { PoseGroup } from 'react-pose';
+import SingleContact from "../components/Company/Info/Single/contactSingle";
+import SingleRequisite from "../components/Company/Info/Single/requisiteSingle";
+import StartComponent from "../components/Company/StartComponent";
+import posed, { PoseGroup } from "react-pose";
 
 const RouteContainer = posed.div({
-  enter: { opacity: 1, delay: 350, beforeChildren: true,height:'100%' },
+  enter: { opacity: 1, delay: 350, beforeChildren: true, height: "100%" },
   exit: { opacity: 0 }
 });
 
@@ -53,7 +53,7 @@ const ComponentsWrapper = styled.div`
 
 export default class App extends Component {
   render() {
-    const {url} = this.props.match;
+    const { path } = this.props.match;
     return (
       <BrowserRouter>
         <Route
@@ -70,17 +70,17 @@ export default class App extends Component {
                     </ContentList>
                     <ContentCompany>
                       <ContentCompanyContainer>
-                      <PoseGroup>
-                        <RouteContainer key={location.pathname}>
-                          <Switch location={location}>
-                            <Route exact path={`${url}/add-company`} component={AddCompany}/>
-                            <Route exact path={`${url}`} component={StartComponent}/>
-                            <Route exact path={`${url}/info`} component={Info}/>
-                            <Route exact path={`${url}/info/contact/:id`} component={SingleContact}/>
-                            <Route exact path={`${url}/info/requisite/:id`} component={SingleRequisite}/>
-                          </Switch>
-                        </RouteContainer>
-                      </PoseGroup>
+                        <PoseGroup>
+                          <RouteContainer key={location.pathname}>
+                            <Switch location={location}>
+                              <Route exact path={`${path}`} component={StartComponent}/>
+                              <Route path={`${path}/add-company`} component={AddCompany}/>
+                              <Route path={`${path}/info`} component={Info}/>
+                              <Route path={`${path}/info/contact/:id`} component={SingleContact}/>
+                              <Route path={`${path}/info/requisite/:id`} component={SingleRequisite}/>
+                            </Switch>
+                          </RouteContainer>
+                        </PoseGroup>
                       </ContentCompanyContainer>
                     </ContentCompany>
                   </ComponentsWrapper>
