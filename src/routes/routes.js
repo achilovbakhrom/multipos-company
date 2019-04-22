@@ -5,10 +5,11 @@ import Hrm from "../containers/Hrm/index";
 import CrmWrapper from '../containers/Crm/crm-wrapper';
 import AdminPanel from "../containers/AdminPanel/AdminPanel";
 import Cash from '../containers/Cash';
+// import Warehouse from '../containers/Warehouse'
 import Store from '../containers/Store';
-// import Warehouse from '../containers/warehouse';
-import Dashboard from '../containers/Dashboard';
 import posed, { PoseGroup } from "react-pose";
+import Management from "../containers/Management/management-wrapper";
+
 
 const RouteContainer = posed.div({
   enter: { opacity: 1, delay: 350, beforeChildren: true },
@@ -43,19 +44,18 @@ const PublicRoute = () => {
                   <Route
                     path="/admin-panel"
                     component={AdminPanel}
-                    exact
                   />
-                  <Route
-                    path="/store"
-                    component={Store}
-                  />
-                  {/*<Route*/}
-                  {/*path={'/warehouse'}*/}
-                  {/*component={Warehouse}*/}
+                  {/*<Route */}
+                  {/*  path="/warehouse"*/}
+                  {/*  component={Warehouse}*/}
                   {/*/>*/}
                   <Route
-                  path={'/dashboard'}
-                  component={Dashboard}
+                      path="/store"
+                      component={Store}
+                  />
+                  <Route
+                      path= "/management"
+                      component={Management}
                   />
                 </Switch>
               </RouteContainer>

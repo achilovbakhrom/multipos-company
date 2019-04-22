@@ -24,6 +24,17 @@ const ContentSubmitButton = styled(Paper)`
     width: 100%;
     height: 50px;
 `;
+const topTabStyles = {
+  display: "flex",
+  alignItems: "center",
+  borderRadius: 0
+};
+const flexItem = {
+  display: "flex",
+  width: "100%",
+  padding: "0 20px",
+  justifyContent: "space-between"
+};
 
 function TabContainer(props) {
   return (
@@ -105,6 +116,7 @@ class TabComponent extends Component {
     this.setState({ value });
   };
 
+
   render() {
     const { classes } = this.props;
     const { value } = this.state;
@@ -113,19 +125,26 @@ class TabComponent extends Component {
       <FormValidation onSubmit={this.onSubmit} config={config}>
         {({ fields, errors, submitted }) => (
           <div className={classes.root}>
-            <ContentSubmitButton>
-              <Button
-                type="submit"
-                style={{ marginLeft: "80%" }}>
-                <IconDone style={{ color: "#79e07c" }}/>
-              </Button>
-              <Button
-                type="button"
-                style={{ marginLeft: "90",marginTop:'10px' }}>
-                <Link to={'/Company'}>
-                  <IconCancel style={{ color: "#4086f4" }}/>
-                </Link>
-              </Button>
+            <ContentSubmitButton style={topTabStyles}>
+              <div style={flexItem}>
+                <Typography variant={"h5"} style={{ fontWeight: "bold" }}>
+                  Company
+                </Typography>
+                  <div className={"btns-wrapper"}>
+                    <Button
+                      type="submit"
+                      style={{ marginLeft: "90" }}>
+                        <IconDone style={{ color: "#79e07c" }}/>
+                    </Button>
+                    <Button
+                      type="button"
+                      style={{ marginLeft: "90"}}>
+                      <Link to={'/Company/info'}>
+                        <IconCancel style={{ color: "#4086f4" }}/>
+                      </Link>
+                    </Button>
+                  </div>
+              </div>
             </ContentSubmitButton>
             <AppBar position="static" color="inherit">
               <Tabs variant="fullWidth" value={value} onChange={this.handleChange} indicatorColor="primary">
