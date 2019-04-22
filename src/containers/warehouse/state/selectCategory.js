@@ -1,15 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-import { withStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import FilledInput from '@material-ui/core/FilledInput';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import NativeSelect from '@material-ui/core/NativeSelect';
+import React,{Component} from 'react';
+import { withStyles } from '@material-ui/core/styles/index';
+import MenuItem from '@material-ui/core/MenuItem/index';
+import FormControl from '@material-ui/core/FormControl/index';
+import Select from '@material-ui/core/Select/index';
+import BootstrapInput from '../../../components/Common/BootstrapInput';
 
 const styles = theme => ({
   root: {
@@ -17,180 +11,115 @@ const styles = theme => ({
     flexWrap: 'wrap',
   },
   formControl: {
-    margin: theme.spacing.unit,
-    minWidth: 262,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing.unit * 2,
+    flexGrow:1,
+    flexBasis:0,
   },
 });
 
-class NativeSelects extends React.Component {
-  state = {
-    age: '',
-    name: 'hai',
-    labelWidth: 0,
-  };
 
-  componentDidMount() {
-    this.setState({
-      labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
-    });
+class CashSelects extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      category:'',
+      subcategory:'',
+      productclass:'',
+      vendor: '',
+      warehouse1: ''
+    }
   }
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
+  handleChange = event => {
+    console.log(event.target.value);
+    this.setState({ [event.target.name]: event.target.value });
   };
 
-  render() {
-    const { classes } = this.props;
-
-    return (
+  render(){
+    const {classes} = this.props;
+    return(
       <div className={classes.root}>
-       
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel
-            ref={ref => {
-              this.InputLabelRef = ref;
-            }}
-            htmlFor="outlined-age-native-simple"
-          >
-            Category
-          </InputLabel>
+        <FormControl className={classes.formControl}>
           <Select
-            native
-            value={this.state.age}
-            onChange={this.handleChange('age')}
-            input={
-              <OutlinedInput
-                name="age"
-                labelWidth={this.state.labelWidth}
-                id="outlined-age-native-simple"
-              />
-            }
+            value={this.state.category}
+            onChange={this.handleChange}
+            displayEmpty
+            className={classes.selectEmpty}
+            input={<BootstrapInput name={'category'} value={this.state.category} />}
           >
-            <option value="" />
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+            <MenuItem value="">
+              <em>Category</em>
+            </MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel
-            ref={ref => {
-              this.InputLabelRef = ref;
-            }}
-            htmlFor="outlined-age-native-simple"
-          >
-            Subcategory
-          </InputLabel>
+        <FormControl className={classes.formControl}>
           <Select
-            native
-            value={this.state.age}
-            onChange={this.handleChange('age')}
-            input={
-              <OutlinedInput
-                name="age"
-                labelWidth={this.state.labelWidth}
-                id="outlined-age-native-simple"
-              />
-            }
+            value={this.state.subcategory}
+            onChange={this.handleChange}
+            displayEmpty
+            className={classes.selectEmpty}
+            input={<BootstrapInput name={'subcategory'} value={this.state.subcategory} />}
           >
-            <option value="" />
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+            <MenuItem value="">
+              <em>Subcategory</em>
+            </MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel
-            ref={ref => {
-              this.InputLabelRef = ref;
-            }}
-            htmlFor="outlined-age-native-simple"
-          >
-            Product Class
-          </InputLabel>
+        <FormControl className={classes.formControl}>
           <Select
-            native
-            value={this.state.age}
-            onChange={this.handleChange('age')}
-            input={
-              <OutlinedInput
-                name="age"
-                labelWidth={this.state.labelWidth}
-                id="outlined-age-native-simple"
-              />
-            }
+            value={this.state.productclass}
+            onChange={this.handleChange}
+            displayEmpty
+            className={classes.selectEmpty}
+            input={<BootstrapInput name={'productclass'} value={this.state.productclass} />}
           >
-            <option value="" />
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+            <MenuItem value="">
+              <em>Product Class</em>
+            </MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel
-            ref={ref => {
-              this.InputLabelRef = ref;
-            }}
-            htmlFor="outlined-age-native-simple"
-          >
-            Vendor
-          </InputLabel>
+        <FormControl className={classes.formControl}>
           <Select
-            native
-            value={this.state.age}
-            onChange={this.handleChange('age')}
-            input={
-              <OutlinedInput
-                name="age"
-                labelWidth={this.state.labelWidth}
-                id="outlined-age-native-simple"
-              />
-            }
+            value={this.state.vendor}
+            onChange={this.handleChange}
+            displayEmpty
+            className={classes.selectEmpty}
+            input={<BootstrapInput name={'vendor'} value={this.state.vendor} />}
           >
-            <option value="" />
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+            <MenuItem value="">
+              <em>Vendor</em>
+            </MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel
-            ref={ref => {
-              this.InputLabelRef = ref;
-            }}
-            htmlFor="outlined-age-native-simple"
-          >
-            Warehouse 1
-          </InputLabel>
+        <FormControl className={classes.formControl}>
           <Select
-            native
-            value={this.state.age}
-            onChange={this.handleChange('age')}
-            input={
-              <OutlinedInput
-                name="age"
-                labelWidth={this.state.labelWidth}
-                id="outlined-age-native-simple"
-              />
-            }
+            value={this.state.warehouse1}
+            onChange={this.handleChange}
+            displayEmpty
+            className={classes.selectEmpty}
+            input={<BootstrapInput name={'warehouse1'} value={this.state.warehouse1} />}
           >
-            <option value="" />
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+            <MenuItem value="">
+              <em>Warehosue 1</em>
+            </MenuItem>
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
           </Select>
         </FormControl>
-        
       </div>
     );
   }
 }
-
-NativeSelects.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(NativeSelects);
+export default withStyles(styles)(CashSelects);

@@ -51,7 +51,9 @@ class AdminPanel extends Component{
      <div className="main-body"> 
      <Container>
           <Row className="justify-content-md-center">
+
                 <Col xs lg="3">
+                <br/>
                   <h1><Chip className={classes.chip} avatar={<Avatar src={avatar} className={classes.bigAvatar}/>} variant="outlined" label="Администратор"/></h1>
                 </Col>
                 <Col xs lg="5">
@@ -60,10 +62,12 @@ class AdminPanel extends Component{
                 </Col>
                 <Col xs lg="4">
                   <br/>
+                  <br/>
                   <h2>22 may, 2019 11:29</h2>
                 </Col>
           </Row>
         </Container>
+        <br/>
         <Carousel interval={null}>
             <Carousel.Item>
               <Container>

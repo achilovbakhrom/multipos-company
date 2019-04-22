@@ -1,144 +1,138 @@
-import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Done from '@material-ui/icons/Done';
-import Close from '@material-ui/icons/Close';
-import TextField from '@material-ui/core/TextField';
-import Switch from '@material-ui/core/Switch';
-import { Field, reduxForm } from 'redux-form'
+import React, { Component } from "react";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import Done from "@material-ui/icons/Done";
+import Close from "@material-ui/icons/Close";
+import TextField from "@material-ui/core/TextField";
+import Switch from "@material-ui/core/Switch";
 
 class WarehouseForm extends Component {
-  
   state = {
-    checkedA: true,
-    checkedB: false,
+    label: "",
+    address: "",
+    name: "",
+    phoneNumber: "",
+    description: "",
+    mainWarehouse: true,
+    active: false
   };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.checked });
-  };
+  handleChange = event => {
+    const isCheckbox = event.target.type === "checkbox";
+    this.setState({
+        [event.target.name]: isCheckbox
+        ? event.target.checked
+        : event.target.value
+    })
+}
+handleSubmit = event => {  
+  event.preventDefault();
+  console.log(this.state);
+}
 
-  render() { 
-    const {handleSubmit, reset} = this.props;
-    const submit = (value) => console.log(value);
-
-    return ( 
-    <form onSubmit={handleSubmit(submit)}>
-      <Grid container>
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <Grid container>
           <Grid item xs={12} container justify="space-between">
-            <Grid item >
-              <Typography variant="h4" gutterBottom style={{margin: 15}}>
-                  Add Warehouse
+            <Grid item>
+              <Typography variant="h4" gutterBottom style={{ margin: 15 }}>
+                Add Warehouse
               </Typography>
             </Grid>
-            <Grid item style={{ margin: 7}}>
+            <Grid item style={{ margin: 7 }}>
               <IconButton type="submit">
                 <Done fontSize="large" />
               </IconButton>
-              <IconButton onClick={reset}>
+              <IconButton>
                 <Close fontSize="large" />
               </IconButton>
             </Grid>
           </Grid>
-          <Grid item xs={12} style={{padding: 15}}>
-            <Typography variant="subtitle1">
-              Label
-            </Typography>
-            <Field
-              name="Label"
-              component={input => 
-                <TextField
-                value={input.value}
-                onChange={input.onChange}
-                id="outlined-bare"
-                placeholder="Label"
-                variant="outlined"
-                fullWidth
-            />}
+          <Grid item xs={12} style={{ padding: 15 }}>
+            <Typography variant="subtitle1">Label</Typography>
+            <TextField
+              onChange={this.handleChange}
+              name="label"
+              placeholder="Label"
+              variant="outlined"
+              fullWidth
             />
           </Grid>
-          <Grid item xs={12} style={{padding: 15}}>
-            <Typography variant="subtitle1">
-                Address
-            </Typography>
+          <Grid item xs={12} style={{ padding: 15 }}>
+            <Typography variant="subtitle1">Address</Typography>
             <TextField
-              id="outlined-bare"
+              onChange={this.handleChange}
+              name="address"
               placeholder="Address"
               variant="outlined"
               fullWidth
             />
           </Grid>
-          <Grid item xs={12} style={{padding: 15}}>
-            <Typography variant="h4">
-                Warehouse Manager
-            </Typography>
+          <Grid item xs={12} style={{ padding: 15 }}>
+            <Typography variant="h4">Warehouse Manager</Typography>
           </Grid>
-          <Grid container  style={{padding: 15}}>
+          <Grid container style={{ padding: 15 }}>
             <Grid item xs={6}>
-              <Typography variant="subtitle1">
-                Name
-              </Typography>
+              <Typography variant="subtitle1">Name</Typography>
               <TextField
-                style={{paddingRight: 15}}
-                id="outlined-bare"
-                placeholder="Address"
+                style={{ paddingRight: 15 }}
+                onChange={this.handleChange}
+                name="name"
+                placeholder="Name"
                 variant="outlined"
                 fullWidth
               />
             </Grid>
             <Grid item xs={6}>
-              <Typography variant="subtitle1">
-                Phone Number
-              </Typography>
+              <Typography variant="subtitle1">Phone Number</Typography>
               <TextField
+                onChange={this.handleChange}
+                name="phoneNumber"
                 id="outlined-bare"
-                placeholder="Address"
+                placeholder="Phone Number"
                 variant="outlined"
                 fullWidth
               />
             </Grid>
           </Grid>
-          <Grid container style={{padding: 15}} >
-            <Grid item xs={6} >
-              <Typography>
-                Main Warehouse
-              </Typography>
+          <Grid container style={{ padding: 15 }}>
+            <Grid item xs={6}>
+              <Typography>Main Warehouse</Typography>
               <Switch
-                checked={this.state.checkedA}
-                onChange={this.handleChange('checkedA')}
-                value="checkedA"
+                name="mainWarehouse"
+                value={this.state.checkedA}
+                onChange={this.handleChange}
+                type="checkbox"
                 color="primary"
               />
             </Grid>
-            <Grid item xs={6} >
-              <Typography>
-                Activity
-              </Typography>
+            <Grid item xs={6}>
+              <Typography>Activity</Typography>
               <Switch
-                checked={this.state.checkedB}
-                onChange={this.handleChange('checkedB')}
-                value="checkedB"
+                name="active"
+                value={this.state.checkedB}
+                onChange={this.handleChange}
+                type="checkbox"
                 color="primary"
               />
             </Grid>
           </Grid>
-          <Grid item xs={12} style={{padding: 15}}>
-            <Typography variant="subtitle1">
-              Description
-            </Typography>
+          <Grid item xs={12} style={{ padding: 15 }}>
+            <Typography variant="subtitle1">Description</Typography>
             <TextField
+              name="description"
+              onChange={this.handleChange}
               id="outlined-bare"
               placeholder="Description"
               variant="outlined"
               fullWidth
             />
           </Grid>
-      </Grid> 
+        </Grid>
       </form>
-     );
+    );
   }
 }
-export default reduxForm({
-  form: 'warehouseForm', // a unique identifier for this form
-})(WarehouseForm);
+export default WarehouseForm;
