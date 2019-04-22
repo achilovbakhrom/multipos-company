@@ -5,7 +5,7 @@ const PrimaryLightColor = '#b7dffd';
 const PrimaryColor = '#49a4de';
 const DarkGray = '#84adc6';
 const DarkPrimary = '#245275';
-const SuccessColor = '#4bb04f';
+const SuccessColor = '#74cc78';
 const SecondaryLightColor = '#d7b7fd';
 const SecondaryColor = '#6200ee';
 const SecondaryDarkColor = '#6200ee';
@@ -15,7 +15,6 @@ const GrayColor = '#dadada';
 const DarkGrayColor = '#5e5e5e';
 const BackgroundGray = '#eeeeee';
 const HeaderColor = '#4d8aaf';
-
 export default {
   palette: {
     primary: {
@@ -25,6 +24,7 @@ export default {
       dark: DarkPrimary,
       darkGray:DarkGray,
       contrastText: WhiteColor,
+
     },
     secondary: {
       light: SecondaryLightColor,

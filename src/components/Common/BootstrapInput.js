@@ -24,6 +24,8 @@ const BootstrapInput = withStyles(theme => ({
       backgroundColor: theme.palette.background.paper,
       borderRadius: 4,
     },
+
   },
 }))(InputBase);
+
 export default BootstrapInput;
